@@ -821,8 +821,10 @@ export async function process_trace_with_equivocation(keypair: Signer) {
   // 3. verifer challenge NAND2 through revealing the `NAND_2_challenge_preimage`
   // 4. prover response NAND2 through enter the `NAND_2_challenge_preimage` and `reveal the input and output for NAND2`
   // >>> equivocation_happen <<<
-  // 5. verifer challenge NAND3 through revealing the `NAND_3_challenge_preimage`
-  // 6. prover response NAND3 through enter the `NAND_3_challenge_preimage` and `reveal the input and output for NAND3`
+  // 5. verifer challenge NAND4 through revealing the `NAND_4_challenge_preimage`
+  // 6. prover response NAND4 through enter the `NAND_4_challenge_preimage` and `reveal the input and output for NAND4`
+  // 7. verifer challenge NAND3 through revealing the `NAND_3_challenge_preimage`
+  // 8. prover response NAND3 through enter the `NAND_3_challenge_preimage` and `reveal the input and output for NAND3`
 
   // ======== the first round =======
   // send the challenge NAND1 transaction
