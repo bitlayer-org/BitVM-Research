@@ -17,6 +17,10 @@ initEccLib(tinysecp as any);
 const ECPair: ECPairAPI = ECPairFactory(tinysecp);
 const network = networks.testnet;
 
+import * as dotenv from 'dotenv';
+dotenv.config();
+const prikey = process.env.PRIVATE_KEY!;
+console.log(prikey);
 import {
   bitvm_NAND_gate,
   bitvm_bitvalue_commitment,
@@ -31,17 +35,14 @@ import {
 import { exit } from "process";
 
 async function start(args:string[]) {
-  // const keypair = ECPair.makeRandom({ network });
-  // const keypair = ECPair.fromWIF("cPjFHxt8kDNjxheAYbyCkHaecbUE67Jy6XZjfG8cJoFANvCfyQF9",network);
   const keypair = ECPair.fromPrivateKey(
     Buffer.from(
-      "40122b41f42eefb4989f9563f1d21688f69d74048cbb92e396ac4c7c6d30b2ab",
+      prikey,
       "hex",
     ),
     { network },
   );
 
-  // 根据参数执行相应的函数
   switch (args[0]) {
     case 'start_taptree':
       await start_taptree(keypair);
@@ -61,7 +62,7 @@ async function start(args:string[]) {
     case 'process_trace':
       await process_trace(keypair);
       break;
-    case 'NAND_gate':
+    case 'bitvm_NAND_gate':
       await bitvm_NAND_gate(keypair);
     case 'bitvm_bitvalue_commitment':
       await bitvm_bitvalue_commitment(keypair);
@@ -71,7 +72,7 @@ async function start(args:string[]) {
       console.log('No function is executed. Please specify a function to run (A, B, C, or D).');
   }
 }
-// 获取命令行参数
+
 const args = process.argv.slice(2);
 start(args).then(()=>exit());
 
