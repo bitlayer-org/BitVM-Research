@@ -5,31 +5,31 @@ import varuint from "varuint-bitcoin";
  * https://github.com/bitcoinjs/bitcoinjs-lib/blob/master/test/integration/csv.spec.ts#L477
  */
 export function witnessStackToScriptWitness(witness: Buffer[]) {
-    let buffer = Buffer.allocUnsafe(0)
+  let buffer = Buffer.allocUnsafe(0);
 
-    function writeSlice(slice: Buffer) {
-        buffer = Buffer.concat([buffer, Buffer.from(slice)])
-    }
+  function writeSlice(slice: Buffer) {
+    buffer = Buffer.concat([buffer, Buffer.from(slice)]);
+  }
 
-    function writeVarInt(i: number) {
-        const currentLen = buffer.length;
-        const varintLen = varuint.encodingLength(i)
+  function writeVarInt(i: number) {
+    const currentLen = buffer.length;
+    const varintLen = varuint.encodingLength(i);
 
-        buffer = Buffer.concat([buffer, Buffer.allocUnsafe(varintLen)])
-        varuint.encode(i, buffer, currentLen)
-    }
+    buffer = Buffer.concat([buffer, Buffer.allocUnsafe(varintLen)]);
+    varuint.encode(i, buffer, currentLen);
+  }
 
-    function writeVarSlice(slice: Buffer) {
-        writeVarInt(slice.length)
-        writeSlice(slice)
-    }
+  function writeVarSlice(slice: Buffer) {
+    writeVarInt(slice.length);
+    writeSlice(slice);
+  }
 
-    function writeVector(vector: Buffer[]) {
-        writeVarInt(vector.length)
-        vector.forEach(writeVarSlice)
-    }
+  function writeVector(vector: Buffer[]) {
+    writeVarInt(vector.length);
+    vector.forEach(writeVarSlice);
+  }
 
-    writeVector(witness)
+  writeVector(witness);
 
-    return buffer
+  return buffer;
 }
