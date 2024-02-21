@@ -7,6 +7,7 @@ import {
   crypto,
   Psbt,
 } from "bitcoinjs-lib";
+import { savm_bit_commitment_tx } from "./savm";
 import { broadcast, waitUntilUTXO } from "./blockstream_utils";
 import { ECPairFactory, ECPairAPI, TinySecp256k1Interface } from "ecpair";
 import { Taptree, Tapleaf } from "bitcoinjs-lib/src/types";
@@ -17,64 +18,63 @@ initEccLib(tinysecp as any);
 const ECPair: ECPairAPI = ECPairFactory(tinysecp);
 const network = networks.testnet;
 
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 dotenv.config();
 const prikey = process.env.PRIVATE_KEY!;
 console.log(prikey);
+
 import {
   bitvm_NAND_gate,
   bitvm_bitvalue_commitment,
   bitvm_bitvalue_commitment_with_sig,
   process_trace_with_equivocation,
-  process_trace
-} from "./bitvm"
+  process_trace,
+} from "./bitvm";
 
-import {
-  toXOnly
-} from "./utils";
+import { toXOnly } from "./utils";
 import { exit } from "process";
 
-async function start(args:string[]) {
-  const keypair = ECPair.fromPrivateKey(
-    Buffer.from(
-      prikey,
-      "hex",
-    ),
-    { network },
-  );
+async function start(args: string[]) {
+  const keypair = ECPair.fromPrivateKey(Buffer.from(prikey, "hex"), {
+    network,
+  });
 
   switch (args[0]) {
-    case 'start_taptree':
+    case "start_taptree":
       await start_taptree(keypair);
       break;
-    case 'start_taptree_p2pk_script':
+    case "start_taptree_p2pk_script":
       await start_taptree_p2pk_script(keypair);
       break;
-    case 'start_taptree_hash_lock_script':
+    case "start_taptree_hash_lock_script":
       await start_taptree_hash_lock_script(keypair);
       break;
-    case 'start_p2pktr':
+    case "start_p2pktr":
       await start_p2pktr(keypair);
       break;
-    case 'process_trace_with_equivocation':
+    case "process_trace_with_equivocation":
       await process_trace_with_equivocation(keypair);
       break;
-    case 'process_trace':
+    case "process_trace":
       await process_trace(keypair);
       break;
-    case 'bitvm_NAND_gate':
+    case "bitvm_NAND_gate":
       await bitvm_NAND_gate(keypair);
-    case 'bitvm_bitvalue_commitment':
+    case "bitvm_bitvalue_commitment":
       await bitvm_bitvalue_commitment(keypair);
-    case 'bitvm_bitvalue_commitment_with_sig':
+    case "bitvm_bitvalue_commitment_with_sig":
       await bitvm_bitvalue_commitment_with_sig(keypair);
+    case "savm_bit_commitment_tx":
+      await savm_bit_commitment_tx(keypair);
     default:
-      console.log('No function is executed. Please specify a function to run (A, B, C, or D).');
+      console.log(
+        "No function is executed. Please specify a function to run (A, B, C, or D).",
+      );
   }
 }
 
 const args = process.argv.slice(2);
-start(args).then(()=>exit());
+start(args).then(() => exit());
 
 // // Notice & Todo: If a leaf of a tree has been revealed in a previous round, it cannot be used as a leaf of the challenge taproot tree to
 // // prevent Prover from deliberately reusing the leaf to unlock the Response Taproot Tree.

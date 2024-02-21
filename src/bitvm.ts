@@ -28,7 +28,7 @@ import {
   send_tx,
 } from "./script_help";
 
-import {toXOnly}from "./utils";
+import { toXOnly } from "./utils";
 
 export async function bitvm_NAND_gate(keypair: Signer) {
   const C0 = Buffer.from([0x64]); // set to
