@@ -17,13 +17,9 @@ import {
   crypto,
   Psbt,
 } from "bitcoinjs-lib";
-import { broadcast, waitUntilUTXO } from "./blockstream_utils";
 import { TinySecp256k1Interface } from "ecpair";
-import { Taptree, Tapleaf } from "bitcoinjs-lib/src/types";
-import { witnessStackToScriptWitness } from "./witness_stack_to_script_witness";
 import { toXOnly } from "./utils";
 import { assert } from "console";
-import { send } from "process";
 const tinysecp: TinySecp256k1Interface = require("tiny-secp256k1");
 initEccLib(tinysecp as any);
 const network = networks.testnet;
@@ -53,7 +49,7 @@ export async function savm_bit_commitment_tx(keypair: Signer) {
   );
   // confirm stack size equal to 1
   bit_commitment_script = `${bit_commitment_script} OP_1`;
-  // verifeir等待超过10个区块可以取回金额
+  // verifeir can refunds after waiting 10 blocks 
   let verifier_refund_time_lock_script = generate_relate_time_lock_script(10);
   console.log(`time_lock_script:${verifier_refund_time_lock_script}`);
   console.log(`bit_commitment_script:${bit_commitment_script}`);
@@ -122,7 +118,7 @@ export async function savm_bit_commitment_tx(keypair: Signer) {
     7,
   );
   // time lock script
-  // prover等待超过20个区块可以取回金额
+  // prover can refund after waiting 20 blocks
   let prover_refund_time_lock_script = generate_relate_time_lock_script(20);
 
   let gates_fail_scripts_tree = construct_scripts_taptree([
