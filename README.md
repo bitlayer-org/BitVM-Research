@@ -1,4 +1,4 @@
-# Bitvm-research
+# BitVM-research
 ## Overview
 Currently, this repository has implemented the complete processes of Bitvm and SatoishVM, which can help you understand them faster.
 
@@ -13,14 +13,14 @@ nvm use v12.22.9
 
 * .env file
 
+***REMEMBER* to modify the private key**
 
 ```
 cp .env-tpl .env
 ```
 
-**REMEMBER to modify the private key**
 
-## Bitvm
+## BitVM
 If you want to run the normal process of Bitvm, you can execute the following command:
 ```
 yarn run start_process_trace
