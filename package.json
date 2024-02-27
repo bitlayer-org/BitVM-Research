@@ -25,6 +25,6 @@
     "start_process_trace_with_equivocation": "yarn build && node dist/index.js process_trace_with_equivocation",
     "start_bitvm_NAND_gate": "yarn build && node dist/index.js bitvm_NAND_gate",
     "start_bitvm_bitvalue_commitment": "yarn build && node dist/index.js bitvm_bitvalue_commitment",
-    "start_savm_bit_commitment_tx":"yarn build && node dist/index.js savm_bit_commitment_tx"
+    "start_savm_bit_commitment_tx": "yarn build && node dist/index.js savm_bit_commitment_tx"
   }
 }
