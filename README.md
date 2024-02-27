@@ -21,6 +21,7 @@ cp .env-tpl .env
 
 testnet faucet:
 ```
+https://faucet.bitvmcn.xyz/
 https://testnet.help/en/btcfaucet/testnet#log
 https://coinfaucet.eu/en/
 https://bitcoinfaucet.uo1.net/send.php
