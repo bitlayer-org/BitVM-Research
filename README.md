@@ -1,6 +1,10 @@
-# BitVM-research
+# BitVM-Research
 ## Overview
 Currently, this repository has implemented the complete processes of Bitvm and SatoishVM, which can help you understand them faster.
+
+## Article link
+
+https://bitlayerlabs.notion.site/Experiment-of-BitVM-White-Paper-ef87e719001e4e2d83765c68f1bb8443
 
 ## Usage
 
