@@ -1,6 +1,6 @@
 # BitVM-Research
 ## Overview
-Currently, this repository has implemented the complete processes of Bitvm, which can help you understand them faster.
+Currently, this repository has implemented the complete processes of BitVM, which can help you understand them faster.
 
 ## Article link
 
@@ -31,16 +31,16 @@ https://coinfaucet.eu/en/
 https://bitcoinfaucet.uo1.net/send.php
 ```
 
-### Bitvm
-If you want to run the normal process of Bitvm, you can execute the following command:
+### BitVM
+If you want to run the normal process of BitVM, you can execute the following command:
 ```
 yarn run start_process_trace
 ```
-If you want to run the case where the Prover is penalized for equivocation in Bitvm, you can execute the following command:
+If you want to run the case where the Prover is penalized for equivocation in BitVM, you can execute the following command:
 ```
 yarn run start_process_trace_with_equivocation
 ```
-If you want to execute a single bitvalue_commitment in bitvm, you can run the following command:
+If you want to execute a single bitvalue_commitment in BitVM, you can run the following command:
 ```
 yarn run start_bitvm_bitvalue_commitment
 ```
