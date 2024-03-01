@@ -1,6 +1,6 @@
 # BitVM-Research
 ## Overview
-Currently, this repository has implemented the complete processes of Bitvm and SatoishVM, which can help you understand them faster.
+Currently, this repository has implemented the complete processes of Bitvm, which can help you understand them faster.
 
 ## Article link
 
@@ -62,17 +62,4 @@ start_process_trace_with_equivocation: 2500 sats
 start_bitvm_nand_gate: 500 sats
 start_bitvm_bitvalue_commitment: 500 sats
 
-
-## SatoishVM
-If you want to run the complete process of SatoishVM, you can execute the following command:
-```
-yarn run start_savm_bit_commitment_tx
-```
-
-#### Transfer sats to the taproot address corresponding to the program
-
-When you meeting `Waiting till UTXO is detected at addr: tb1pqnvkahjv98sl9m28mpyhejx23jequp4ehvsy844yrd6au8q88hxquk3zxl`,
-you need to transfer some satoishs to this account.
-
-start_savm_bit_commitment_tx: 750 sats.
 
