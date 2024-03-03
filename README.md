@@ -51,7 +51,7 @@ yarn run start_bitvm_NAND_gate
 
 #### Transfer sats to the taproot address corresponding to the program
 
-When you meeting `Waiting till UTXO is detected at addr: tb1pqnvkahjv98sl9m28mpyhejx23jequp4ehvsy844yrd6au8q88hxquk3zxl`,
+When you meet `Waiting till UTXO is detected at addr: tb1pqnvkahjv98sl9m28mpyhejx23jequp4ehvsy844yrd6au8q88hxquk3zxl`,
 you need to transfer some satoishs to this account.
 
 The consumption of each transaction is 250 Sats.

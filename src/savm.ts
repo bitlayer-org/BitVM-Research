@@ -49,7 +49,7 @@ export async function savm_bit_commitment_tx(keypair: Signer) {
   );
   // confirm stack size equal to 1
   bit_commitment_script = `${bit_commitment_script} OP_1`;
-  // verifeir can refunds after waiting 10 blocks 
+  // verifier can refunds after waiting 10 blocks
   let verifier_refund_time_lock_script = generate_relate_time_lock_script(10);
   console.log(`time_lock_script:${verifier_refund_time_lock_script}`);
   console.log(`bit_commitment_script:${bit_commitment_script}`);
